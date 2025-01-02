@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:5000/api/bookings';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://tablebookingbackend-rdfv.onrender.com/api/bookings';
 
 export default async function handler(req, res) {
   try {
