@@ -6,7 +6,6 @@ export default function Availability({ selectedDate, selectedTime }) {
   const [availableSlots, setAvailableSlots] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
