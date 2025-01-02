@@ -62,7 +62,7 @@ export default function Availability({ selectedDate, selectedTime }) {
           ))}
         </ul>
       ) : (
-        <p></p>
+        <p>No error</p>
       )}
     </div>
   );
