@@ -62,7 +62,7 @@ export default function Availability({ selectedDate, selectedTime }) {
           ))}
         </ul>
       ) : (
-        <p>No slots available for the selected date and time.</p>
+        <p>Slots available for the selected date and time.</p>
       )}
     </div>
   );
