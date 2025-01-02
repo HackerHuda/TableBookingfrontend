@@ -5,8 +5,6 @@ import axios from 'axios';
 export default function Availability({ selectedDate, selectedTime }) {
   const [availableSlots, setAvailableSlots] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (selectedDate && selectedTime) {
@@ -20,12 +18,14 @@ export default function Availability({ selectedDate, selectedTime }) {
       const response = await axios.get('/api/bookings', {
         params: { date: selectedDate },
       });
+      // Ensure the response is structured correctly
       const bookedSlots = response.data.map((booking) => booking.time);
       console.log('Booked Slots:', bookedSlots);
 
       const allSlots = generateTimeSlots();
       console.log('All Slots:', allSlots);
 
+      // Filter out booked slots to find available slots
       const freeSlots = allSlots.filter((slot) => !bookedSlots.includes(slot));
       console.log('Available Slots:', freeSlots);
 
@@ -40,7 +40,7 @@ export default function Availability({ selectedDate, selectedTime }) {
   const generateTimeSlots = () => {
     const slots = [];
     for (let i = 9; i < 22; i++) {
-      slots.push(${i}:00, ${i}:30);
+      slots.push(`${i}:00`, `${i}:30`); // Push both full hour and half hour slots
     }
     return slots;
   };
@@ -62,7 +62,7 @@ export default function Availability({ selectedDate, selectedTime }) {
           ))}
         </ul>
       ) : (
-        <p>No error</p>
+        <p>No slots available for the selected date and time.</p>
       )}
     </div>
   );
